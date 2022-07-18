@@ -1,65 +1,181 @@
-const daysBlock = document.querySelectorAll('.days');
+
 const hoursBlock = document.querySelectorAll('.hours');
 const minutesBlock = document.querySelectorAll('.minutes');
 const secondsBlock = document.querySelectorAll('.seconds');
 const submitButton = document.querySelector('.submit-button');
 const input = document.querySelector('#date');
-const topBlocks = document.querySelectorAll('.top');
-const bottomBlocks = document.querySelectorAll('.bottom');
+const topClones = document.querySelectorAll('.top-clone');
+const bottomClones = document.querySelectorAll('.bottom-clone');
 
+// days vars
+const days1 = document.querySelectorAll('.days-1');
+const days2 = document.querySelectorAll('.days-2');
+const days3 = document.querySelectorAll('.days-3');
+
+// hours vars
+const hours1 = document.querySelectorAll('.hours-1');
+const hours2 = document.querySelectorAll('.hours-2');
+
+// minutes vars
+const minutes1 = document.querySelectorAll('.minutes-1');
+const minutes2 = document.querySelectorAll('.minutes-2');
+
+// seconds vars
+const seconds1 = document.querySelectorAll('.seconds-1');
+const seconds2 = document.querySelectorAll('.seconds-2');
 
 let finishDate = new Date();
 
 finishDate.setFullYear(2022, 7, 15);
 finishDate.setHours(0,0,0,0);
 
-function toggle() {
-    topBlocks.forEach((element) => {
-        element.classList.remove('top-animation');
+function turnOffAnimation() {
+    topClones.forEach((el) => {
+        el.classList.remove('top-animation');
     })
 
-    bottomBlocks.forEach((element) => {
-        element.classList.remove('bottom-animation');
+    bottomClones.forEach((el) => {
+        el.classList.remove('bottom-animation');
     })
 }
 
-const showTime = () => {
+function calculateDifference() {
     const currentDate = new Date();
 
-    let difference = finishDate.getTime() - currentDate.getTime();
+    const difference = finishDate.getTime() - currentDate.getTime();
+
+    const days = Math.floor(difference / (86400 * 1000));
+    const hours = Math.floor(difference / (3600 * 1000) % 24);
+    const minutes = Math.floor(difference / (60 * 1000) % 60);
+    const seconds = Math.floor(difference / (1000) % 60);
+
+    return [days, hours, minutes, seconds];
+}
+
+function renderTimer(array) {
+
+    const daysArray = array[0].toString().split('');
+    const hoursArray = array[1].toString().split('');
+    const minutesArray = array[2].toString().split('');
+    const secondsArray = array[3].toString().split('');
+
+    // days render
+    if (daysArray.length === 3) {
+        days1.forEach((element) => {
+            element.innerHTML = daysArray[0];
+        });
+
+        days2.forEach((element) => {
+            element.innerHTML = daysArray[1];
+        });
+
+        days3.forEach((element) => {
+            element.innerHTML = daysArray[2];
+        });
+    } else if (daysArray.length === 2) {
+        days1.forEach((element) => {
+            element.innerHTML = 0;
+        });
+
+        days2.forEach((element) => {
+            element.innerHTML = daysArray[0];
+        });
+
+        days3.forEach((element) => {
+            element.innerHTML = daysArray[1];
+        });
+    } else if (daysArray.length === 1) {
+        days1.forEach((element) => {
+            element.innerHTML = 0;
+        });
+
+        days2.forEach((element) => {
+            element.innerHTML = 0;
+        });
+
+        days3.forEach((element) => {
+            element.innerHTML = daysArray[0];
+        });
+    }
+
+    // hours render 
+    if (hoursArray.length === 2) {
+        hours1.forEach((element) => {
+            element.innerHTML = hoursArray[0];
+        });
+
+        hours2.forEach((element) => {
+            element.innerHTML = hoursArray[1];
+        });
+    } else if (hoursArray.length === 1) {
+        hours1.forEach((element) => {
+            element.innerHTML = 0;
+        });
+
+        hours2.forEach((element) => {
+            element.innerHTML = hoursArray[0];
+        });
+    } 
+
+    // minutes render
+    if (minutesArray.length === 2) {
+        minutes1.forEach((element) => {
+            element.innerHTML = minutesArray[0];
+        });
+
+        minutes2.forEach((element) => {
+            element.innerHTML = minutesArray[1];
+        });
+    } else if (minutesArray.length === 1) {
+        minutes1.forEach((element) => {
+            element.innerHTML = 0;
+        });
+
+        minutes2.forEach((element) => {
+            element.innerHTML = minutesArray[0];
+        });
+    } 
+
+    // seconds render
+    if (secondsArray.length === 2) {
+        seconds1.forEach((element) => {
+            element.innerHTML = secondsArray[0];
+        });
+
+        seconds2.forEach((element) => {
+            element.innerHTML = secondsArray[1];
+        });
+    } else if (secondsArray.length === 1) {
+        seconds1.forEach((element) => {
+            element.innerHTML = 0;
+        });
+
+        seconds2.forEach((element) => {
+            element.innerHTML = secondsArray[0];
+        });
+    } 
+}
+
+function combo() {
+    renderTimer(calculateDifference());
+}
+
+const showTime = () => {
     
-    let days = Math.floor(difference / (86400 * 1000));
-    let hours = Math.floor(difference / (3600 * 1000) % 24);
-    let minutes = Math.floor(difference / (60 * 1000) % 60);
-    let seconds = Math.floor(difference / (1000) % 60);
-
-    daysBlock.forEach((element) => {
-        element.innerHTML = days;
-    });
-
-    hoursBlock.forEach((element) => {
-        element.innerHTML = hours;
-    });
-
-    minutesBlock.forEach((element) => {
-        element.innerHTML = minutes;
-    });
-
-    secondsBlock.forEach((element) => {
-        element.innerHTML = seconds;
-    });
-    
-    topBlocks.forEach((element) => {
-        element.classList.add('top-animation');
+    topClones.forEach((el) => {
+        el.classList.add('top-animation');
     })
 
-    bottomBlocks.forEach((element) => {
-        element.classList.add('bottom-animation');
+    bottomClones.forEach((el) => {
+        el.classList.add('bottom-animation');
     })
 
-    setTimeout(toggle,750);
+    setTimeout(turnOffAnimation,500);
     // console.log(`Текущая дата: ${currentDate}`);
     // console.log(`Конечная дата: ${finishDate}`);
+
+    setTimeout(combo, 275);
+
 }
 
 showTime();

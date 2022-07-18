@@ -8,39 +8,80 @@
     <title>Countdown Timer</title>
 </head>
 <body>
-    <div class="parent">
-        <header>
-            <h1>Countdown timer</h1>
-        </header>
-        <main>
-            <div class="child date-input">
-                    <input type="datetime-local" id="date" value="2023-08-12"/>
-                    <submit><button class="submit-button">Submit</button></submit>
+    <header>
+        <h1>COUNTDOWN TIMER</h1>
+    </header>
+    <main>
+        <div class="date-input">
+            <label>Please enter the Date:</label>
+            <input type="datetime-local" id="date" value="2023-08-12"/>
+            <submit><button class="submit-button">Submit</button></submit>
+        </div>
+        <div class="container">
+        <!-- days - max: 3-digit -->
+            <div class="timer-block box-1">
+                <div class="top days-1">0</div>
+                <div class="bottom days-1">0</div>
+                <div class="top-clone days-1">0</div>
+                <div class="bottom-clone days-1">0</div>
             </div>
-            <div class="child timer">
-                <div class="timer-block">
-                    <div class="top days">0</div>
-                    <div class="bottom days">0</div>
-                </div>
-                <span class="measures bold">Days</span>
-                <div class="timer-block">
-                    <div class="top hours">0</div>
-                    <div class="bottom hours">0</div>
-                </div>
-                <span class="measures bold">Hours</span>
-                <div class="timer-block">
-                    <div class="top minutes">0</div>
-                    <div class="bottom minutes">0</div>
-                </div>
-                <span class="measures bold">Minutes</span>
-                <div class="timer-block">
-                    <div class="top seconds">0</div>
-                    <div class="bottom seconds">0</div>
-                </div>
-                <span class="measures bold">Seconds</span>
+            <div class="timer-block box-2">
+                <div class="top days-2">0</div>
+                <div class="bottom days-2">0</div>
+                <div class="top-clone days-2">0</div>
+                <div class="bottom-clone days-2">0</div>
             </div>
-        </main>
-    </div>
-    <!-- <script src="./app.js"></script> -->
+            <div class="timer-block box-3">
+                <div class="top days-3">0</div>
+                <div class="bottom days-3">0</div>
+                <div class="top-clone days-3">0</div>
+                <div class="bottom-clone days-3">0</div>
+            </div>
+        <!-- hours - max: 2-digit -->
+            <div class="timer-block box-4">
+                <div class="top hours-1">0</div>
+                <div class="bottom hours-1">0</div>
+                <div class="top-clone hours-1">0</div>
+                <div class="bottom-clone hours-1">0</div>
+            </div>
+            <div class="timer-block box-5">
+                <div class="top hours-2">0</div>
+                <div class="bottom hours-2">0</div>
+                <div class="top-clone hours-2">0</div>
+                <div class="bottom-clone hours-2">0</div>
+            </div>
+        <!-- minutes - max: 2-digit -->
+            <div class="timer-block box-6">
+                <div class="top minutes-1">0</div>
+                <div class="bottom minutes-1">0</div>
+                <div class="top-clone minutes-1">0</div>
+                <div class="bottom-clone minutes-1">0</div>
+            </div>
+            <div class="timer-block box-7">
+                <div class="top minutes-2">0</div>
+                <div class="bottom minutes-2">0</div>
+                <div class="top-clone minutes-2">0</div>
+                <div class="bottom-clone minutes-2">0</div>
+            </div>
+        <!-- seconds - max: 2-digit -->
+            <div class="timer-block box-8">
+                <div class="top seconds-1">0</div>
+                <div class="bottom seconds-1">0</div>
+                <div class="top-clone seconds-1">0</div>
+                <div class="bottom-clone seconds-1">0</div>
+            </div>
+            <div class="timer-block box-9">
+                <div class="top seconds-2">0</div>
+                <div class="bottom seconds-2">0</div>
+                <div class="top-clone seconds-2">0</div>
+                <div class="bottom-clone seconds-2">0</div>
+            </div>
+            <span class="measures bold box-10">Days</span>
+            <span class="measures bold box-11">Hours</span>
+            <span class="measures bold box-12">Minutes</span>
+            <span class="measures bold box-13">Seconds</span>
+        </div>
+    </main>
+    <script src="./app.js"></script>
 </body>
 </html>
